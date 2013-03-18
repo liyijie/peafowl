@@ -1,4 +1,9 @@
 ClientWeb::Application.routes.draw do
+
+  scope :module => "admin" do
+    get "admin/index"
+  end
+
   get "home/index"
 
   devise_for :users
