@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  helpers:
+    actions: "Actions"
+    links:
+      back: "返回"
+      cancel: "取消"
+      confirm: "你确认?"
+      destroy: "删除"
+      new: "新建"
+    titles:
+      edit: "编辑"
+      save: "保存"
+      new: "新建"
+      delete: "删除"

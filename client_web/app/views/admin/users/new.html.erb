@@ -1,0 +1,14 @@
+<h2 class="page-header">创建用户</h2>
+
+<%= simple_form_for(@user, :url => admin_users_path, :html => { :class => 'form_horizontal' }) do |f| %>
+
+  <%= f.input :username, label: "账号" %>
+  <%= f.input :nickname, label: "姓名" %>
+  <%= f.input :password, label: "密码" %>
+  <%= f.input :password_confirmation, label: "密码确认" %>
+  <%= f.input :admin, label: "管理员" %>
+
+  <%= f.submit "创建", :class => "btn btn-success" %>
+  <%= link_to "返回", admin_users_path, :class => "btn" %>
+
+<% end %>

@@ -1,7 +1,9 @@
 ClientWeb::Application.routes.draw do
 
-  scope :module => "admin" do
-    get "admin/index"
+  namespace :admin do
+    resources :users
+
+    get "home/index"
   end
 
   get "home/index"

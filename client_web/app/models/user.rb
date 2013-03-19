@@ -16,11 +16,12 @@ class User < ActiveRecord::Base
     admin
   end
 
+  def delete
+    update_attribute(:enbale => false)
+  end
+
   def email_required?
     false
   end
 
-  def email_changed?
-    false
-  end
 end
