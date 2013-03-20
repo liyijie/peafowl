@@ -1,7 +1,6 @@
 <h2>注册</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form_horizontal' }) do |f| %>
-  <%= devise_error_messages! %>
 
   <%= f.input :username %>
   <%= f.input :nickname %>

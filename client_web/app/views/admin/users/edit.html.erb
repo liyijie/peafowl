@@ -1,0 +1,12 @@
+<h2 class="page-header">编辑用户</h2>
+
+<%= simple_form_for(@user, :url => admin_user_path(@user), :html => { :class => 'form_horizontal' }) do |f| %>
+
+  <%= f.input :username, label: "账号" %>
+  <%= f.input :nickname, label: "姓名" %>
+  <%= f.input :admin, label: "管理员" %>
+
+  <%= f.submit "更新", :class => "btn btn-success" %>
+  <%= link_to "返回", admin_users_path, :class => "btn" %>
+
+<% end %>
