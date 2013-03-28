@@ -1,3 +1,44 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+@import "compass/layout";
+
+#dish li {
+
+  a {
+    background-color: #5bb65b;
+  }
+
+  &.active a {
+    background-color: #ee5f5b;
+  }
+}
+
+.order {
+  &.active {
+    background-color: $blue;
+  }
+}
+
+#order-footer {
+  position: fixed;
+  bottom: 0;
+}
+
+.base-info {
+  border: 1px solid #ccc;
+  padding: 10px;
+
+  span {
+    background-color: #fff;
+  }
+}
+
+#operations {
+  .btn-group {
+    margin-left: 0;
+  }
+
+  #checkout {
+    font-size: 2em;
+    padding: 30px;
+  }
+}

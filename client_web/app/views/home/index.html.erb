@@ -1,2 +1,135 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+  <div id="order-page">
+    <div class="span6">
+      <button class="btn btn-primary btn-block btn-large">
+        私房牛头面馆
+      </button>
+
+      <table class="table table-striped order-list">
+        <thead>
+          <tr>
+            <th></th>
+            <th>菜名</th>
+            <th>备注</th>
+            <th>份数</th>
+            <th>单价</th>
+            <th>小计</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% 1.upto(5) do |index| %>
+            <tr class="order <%= "active" if index == 2 %>">
+              <td><%= index %></td>
+              <td>萝卜排骨汤</td>
+              <td>少盐/多糖/微辣</td>
+              <td>2</td>
+              <td>5.00</td>
+              <td>10.00</td>
+            </tr>
+          <% end %>
+          <tr>
+            <td colspan="6"><p style="color: red">合计 <span style="font-size: 2em;font-style: italic;">30.00</span></p></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="span6">
+      <div class="tabbable">
+        <ul class="nav nav-tabs" data-tabs="tabs" id="dish">
+          <li>
+            <a href="#tab1" data-toggle="tab" class="active">川菜</a>            
+          </li>
+          <li>
+            <a href="#tab2" data-toggle="tab">湘菜</a>
+          </li>
+          <li>
+            <a href="#tab3" data-toggle="tab">粤菜</a>
+          </li>
+          <li>
+            <a href="#tab4" data-toggle="tab">闽菜</a>
+          </li>
+          <li>
+            <a href="#tab5" data-toggle="tab">徽菜</a>
+          </li>
+          <li>
+            <a href="#tab6" data-toggle="tab">浙菜</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+
+          <% (1..6).each do |index| %>
+            <div class="tab-pane <%= "active" if index == 1 %>" id="tab<%= index %>">
+              <ul class="nav">
+                <li>
+                  <button class="span4 btn btn-large btn-info">麻婆豆腐<%= index %></button>
+                </li>
+                <li>
+                  <button class="span4 btn btn-large">回锅肉<%= index %></button>
+                </li>
+                <li>
+                  <button class="span4 btn btn-large">宫保鸡丁<%= index %></button>
+                </li>
+                <li>
+                  <button class="span4 btn btn-large">夫妻肺片<%= index %></button>
+                </li>
+                <li>
+                  <button class="span4 btn btn-large">口水鸡<%= index %></button>
+                </li>
+                <li>
+                  <button class="span4 btn btn-large">重庆鸡公煲<%= index %></button>
+                </li>
+                <li>
+                  <button class="span4 btn btn-large">蒜泥白肉<%= index %></button>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="order-footer">
+    <div id="operations">
+      <button class="btn btn-danger pull-right" id="checkout">结账</button>
+      <div class="btn-group">
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+      </div>
+    </div>
+
+    <div class="base-info">
+      <p>
+        <span>收款管理软件</span>
+        <span>门店：宝山店</span>
+        <span>收银员：<%= current_user.username %></span>
+      </p>
+      <p>
+        <span>单号：201301010001</span>
+        <span>台号：001</span>
+      </p>
+    </div>
+  </div>
