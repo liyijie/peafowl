@@ -4,7 +4,7 @@
         私房牛头面馆
       </button>
 
-      <table class="table table-striped order-list">
+      <table class="table table-striped" id="order-list">
         <thead>
           <tr>
             <th></th>
@@ -16,16 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <% 1.upto(5) do |index| %>
-            <tr class="order <%= "active" if index == 2 %>">
-              <td><%= index %></td>
-              <td>萝卜排骨汤</td>
-              <td>少盐/多糖/微辣</td>
-              <td>2</td>
-              <td>5.00</td>
-              <td>10.00</td>
-            </tr>
-          <% end %>
+          
           <tr>
             <td colspan="6"><p style="color: red">合计 <span style="font-size: 2em;font-style: italic;">30.00</span></p></td>
           </tr>
@@ -33,9 +24,9 @@
       </table>
     </div>
     <div class="span6">
-      <div class="tabbable">
-        <ul class="nav nav-tabs" data-tabs="tabs" id="dish">
-          <li>
+      <div class="tabbable" id="cookbook">
+        <ul class="nav nav-tabs" data-tabs="tabs" id="cookbook-category">
+          <li class="active">
             <a href="#tab1" data-toggle="tab" class="active">川菜</a>            
           </li>
           <li>
@@ -55,30 +46,29 @@
           </li>
         </ul>
         <div class="tab-content">
-
           <% (1..6).each do |index| %>
             <div class="tab-pane <%= "active" if index == 1 %>" id="tab<%= index %>">
               <ul class="nav">
                 <li>
-                  <button class="span4 btn btn-large btn-info">麻婆豆腐<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>1" data-price="10.0">麻婆豆腐<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large">回锅肉<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>2" data-price="10.0">回锅肉<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large">宫保鸡丁<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>3" data-price="10.0">宫保鸡丁<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large">夫妻肺片<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>4" data-price="10.0">夫妻肺片<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large">口水鸡<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>5" data-price="10.0">口水鸡<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large">重庆鸡公煲<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>6" data-price="10.0">重庆鸡公煲<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large">蒜泥白肉<%= index %></button>
+                  <button class="span4 btn btn-large" data-id="<%= index %>7" data-price="10.0">蒜泥白肉<%= index %></button>
                 </li>
               </ul>
             </div>
@@ -133,3 +123,12 @@
       </p>
     </div>
   </div>
+
+<script type="text/template" id="order-template">
+  <td></td>
+  <td><%%= title %></td>
+  <td><%%= tag %></td>
+  <td><%%= ammount %></td>
+  <td><%%= price %></td>
+  <td><%%= totalPrice %></td>
+</script>
