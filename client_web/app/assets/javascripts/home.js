@@ -36,7 +36,7 @@ $(function() {
     },
 
     increaseOrder: function(order) {
-      var existOrder = this.findOrder(order.id);
+      var existOrder = this.findOrder(order.foot_id);
       if (existOrder) {
         existOrder.increaseAmmount();
       } else {
@@ -45,7 +45,7 @@ $(function() {
     },
 
     descreaseOrder: function(order) {
-      var existOrder = this.findOrder(order.id);
+      var existOrder = this.findOrder(order.foot_id);
       var ammount = existOrder.descreaseAmmount();
 
       if (ammount <= 0) {
@@ -54,10 +54,8 @@ $(function() {
     },
 
     findOrder: function(foot_id) {
-      this.each(function(order) {
-        if(order.foot_id == foot_id) {
-          return order;
-        } 
+      return this.find(function(order) {
+        return order.get("foot_id") == foot_id;
       });
     }
   });
@@ -84,6 +82,8 @@ $(function() {
 
     initialize: function() {
       this.listenTo(orderList, "add", this.addOrder);
+      this.listenTo(orderList, "increaseOrder", this.calcTotalPrice);
+      this.listenTo(orderList, "descreaseOrder", this.calcTotalPrice);
 
       $('#cookbook .tab-pane button').click(function() {
         $('#cookbook .tab-pane button').removeClass("btn-info");
@@ -105,6 +105,11 @@ $(function() {
 
     updateOrder: function(order) {
 
+    },
+
+    calcTotalPrice: function() {
+      alert(orderList.totalPrice());
+      $('#totalPrice').text(orderList.totalPrice());
     }
 
   });
