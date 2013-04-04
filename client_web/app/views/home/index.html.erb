@@ -19,7 +19,7 @@
           
           <tr>
             <td colspan="6">
-              <p style="color: red">合计 <span style="font-size: 2em;font-style: italic;" id="totalPrice"></span></p>
+              <p style="color: red">合计 <span style="font-size: 2em;font-style: italic;" id="orderTotalPrice"></span></p>
             </td>
           </tr>
         </tbody>
@@ -52,25 +52,25 @@
             <div class="tab-pane <%= "active" if index == 1 %>" id="tab<%= index %>">
               <ul class="nav">
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>1" data-price="10.0">麻婆豆腐<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>1" data-price="10.0">麻婆豆腐<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>2" data-price="10.0">回锅肉<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>2" data-price="10.0">回锅肉<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>3" data-price="10.0">宫保鸡丁<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>3" data-price="10.0">宫保鸡丁<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>4" data-price="10.0">夫妻肺片<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>4" data-price="10.0">夫妻肺片<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>5" data-price="10.0">口水鸡<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>5" data-price="10.0">口水鸡<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>6" data-price="10.0">重庆鸡公煲<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>6" data-price="10.0">重庆鸡公煲<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large" data-id="<%= index %>7" data-price="10.0">蒜泥白肉<%= index %></button>
+                  <button class="span4 btn btn-large foot" data-id="<%= index %>7" data-price="10.0">蒜泥白肉<%= index %></button>
                 </li>
               </ul>
             </div>
@@ -132,5 +132,5 @@
   <td><%%= tag %></td>
   <td><%%= ammount %></td>
   <td><%%= price %></td>
-  <td><%%= totalPrice %></td>
+  <td class='total-price'></td>
 </script>

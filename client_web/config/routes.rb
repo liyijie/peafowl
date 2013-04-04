@@ -1,5 +1,8 @@
 ClientWeb::Application.routes.draw do
 
+  resources :orders
+
+
   namespace :admin do
     resources :users
 

@@ -1,11 +1,10 @@
 $(function() {
   
-  var Order = Backbone.Model.extend({
+  var OrderItem = Backbone.Model.extend({
     defaults: function() {
       return {
         ammount: 1,
-        tag: "少盐、多糖",
-        totalPrice: 20.0
+        tag: ""
       }
     },
 
@@ -24,8 +23,9 @@ $(function() {
     }
   });
 
-  var OrderList = Backbone.Collection.extend({
-    model: Order,
+  var OrderItemList = Backbone.Collection.extend({
+    model: OrderItem,
+    url: "/orders",
 
     totalPrice: function() {
       var totalPrice = 0;
@@ -60,9 +60,9 @@ $(function() {
     }
   });
 
-  var orderList = new OrderList;
+  var orderItemList = new OrderItemList;
 
-  var OrderView = Backbone.View.extend({
+  var OrderItemView = Backbone.View.extend({
     tagName: "tr",
     template: _.template($("#order-template").html()),
 
@@ -72,8 +72,10 @@ $(function() {
     },
 
     render: function() {
+      $("#order-list tbody tr").removeClass("error");
       this.$el.html(this.template(this.model.toJSON()));
-      this.$el.addClass("order active");
+      this.$el.addClass("order error");
+      $('.total-price', this.$el).text(this.model.totalPrice());
       return this;
     }
   });
@@ -81,35 +83,32 @@ $(function() {
   var AppView = Backbone.View.extend({
 
     initialize: function() {
-      this.listenTo(orderList, "add", this.addOrder);
-      this.listenTo(orderList, "increaseOrder", this.calcTotalPrice);
-      this.listenTo(orderList, "descreaseOrder", this.calcTotalPrice);
+      this.listenTo(orderItemList, "add", this.addOrder);
+      this.listenTo(orderItemList, "all", this.orderTotalPrice);
 
-      $('#cookbook .tab-pane button').click(function() {
-        $('#cookbook .tab-pane button').removeClass("btn-info");
+      this.orderTotalPriceText = $('#orderTotalPrice');
+
+      $('.foot').click(function() {
+        $('.foot').removeClass("btn-info");
         $this = $(this);
         $this.addClass("btn-info");
 
-        var order = { foot_id: $this.attr("data-id"), title: $this.text(), price: $this.attr("data-price"), ammount: 1 };
-        orderList.increaseOrder(order);
+        var orderItem = { foot_id: $this.attr("data-id"), title: $this.text(), price: $this.attr("data-price"), ammount: 1 };
+        orderItemList.increaseOrder(orderItem);
       });
     },
 
-
-    addOrder: function(order) {
-      $("#order-list tbody tr").removeClass("active");
-
-      var orderView = new OrderView({model: order});
-      $("#order-list tbody").prepend(orderView.render().el);
+    render: function() {
+      this.orderTotalPrice();
     },
 
-    updateOrder: function(order) {
-
+    addOrder: function(orderItem) {
+      var orderItemView = new OrderItemView({model: orderItem});
+      $("#order-list tbody").prepend(orderItemView.render().el);
     },
 
-    calcTotalPrice: function() {
-      alert(orderList.totalPrice());
-      $('#totalPrice').text(orderList.totalPrice());
+    orderTotalPrice: function() {
+      this.orderTotalPriceText.text(orderItemList.totalPrice());
     }
 
   });
