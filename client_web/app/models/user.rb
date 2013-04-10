@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   validate :username, :uniqueness => true, :length => { :maximum => 32 }
   validate :nickname, :presence => true, :length => { :maximum => 32 }
 
+  has_many :orders
+
   def is_admin?
     admin
   end
