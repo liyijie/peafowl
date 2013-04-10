@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @item.price %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @item.desc %>
+</p>
+
+<p>
+  <b>Kind:</b>
+  <%= @item.kind_id %>
+</p>
+
+<% @item.attachments.each do |attachment| %>
+  <div class="item">
+    <%= image_tag(attachment.attachment.thumb) %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

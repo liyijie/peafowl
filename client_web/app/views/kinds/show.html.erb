@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @kind.name %>
+  <br>
+  <% @kind.items.each do |item| %>
+    <ul>
+      <li>
+        <%= link_to item.name, item %>
+        <%= item.price %>
+      </li>
+    </ul> 
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_kind_path(@kind) %> |
+<%= link_to 'Back', kinds_path %>

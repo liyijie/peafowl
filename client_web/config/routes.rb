@@ -1,5 +1,11 @@
 ClientWeb::Application.routes.draw do
 
+  resources :items
+
+
+  resources :kinds
+
+
   namespace :admin do
     resources :users
 
