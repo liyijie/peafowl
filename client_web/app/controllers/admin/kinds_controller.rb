@@ -1,4 +1,4 @@
-class KindsController < ApplicationController
+class Admin::KindsController < Admin::AdminController
   # GET /kinds
   # GET /kinds.json
   def index

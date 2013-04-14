@@ -1,0 +1,10 @@
+<%= simple_form_for(@item, html: {multipart: true, class: "form_horizontal"}) do |f| %>
+  <%= f.input :name, label: "菜名" %>
+  <%= f.input :price, label: "价格" %>
+  <%= f.input :desc, label: "描述", :input_html => { :rows => 6 } %>
+  <%= f.association :kind, label: "分类", prompt: "请选择分类" %>
+
+  <%= f.input :attachment, label: "图片", :as => "file" %>
+
+  <%= f.submit :class => "btn btn-primary btn-large" %>
+<% end %>

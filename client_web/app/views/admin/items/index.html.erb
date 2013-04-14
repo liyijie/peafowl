@@ -1,0 +1,32 @@
+<h2 class="page-header">菜单管理
+  <a href="<%= new_admin_item_path %>" class="btn btn-primary pull-right">
+    增加菜单
+  </a>
+</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>菜名</th>
+      <th>价格</th>
+      <th>描述</th>
+      <th>分类</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.desc %></td>
+        <td><%= item.kind_id %></td>
+        <td><%= link_to 'Show', admin_item_path(item) %></td>
+        <td><%= link_to 'Edit', edit_admin_item_path(item) %></td>
+        <td><%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @items %>
