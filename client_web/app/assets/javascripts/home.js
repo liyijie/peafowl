@@ -26,6 +26,7 @@ $(function() {
   var OrderItemList = Backbone.Collection.extend({
     model: OrderItem,
     //url: "/orders",
+    localStorage: new Backbone.LocalStorage("order-items"),
 
     totalPrice: function() {
       var totalPrice = 0;

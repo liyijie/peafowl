@@ -10,17 +10,6 @@ class Admin::KindsController < Admin::AdminController
     end
   end
 
-  # GET /kinds/1
-  # GET /kinds/1.json
-  def show
-    @kind = Kind.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @kind }
-    end
-  end
-
   # GET /kinds/new
   # GET /kinds/new.json
   def new
@@ -76,7 +65,7 @@ class Admin::KindsController < Admin::AdminController
     @kind.destroy
 
     respond_to do |format|
-      format.html { redirect_to kinds_url }
+      format.html { redirect_to admin_kinds_url, notice: "分类#{kind.name}删除成功" }
       format.json { head :no_content }
     end
   end

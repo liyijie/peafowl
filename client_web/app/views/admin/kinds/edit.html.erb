@@ -1,6 +1,10 @@
-<h1>Editing kind</h1>
+<h2 class="page-header">编辑分类
+  <a href="<%= admin_kinds_path %>" class="btn btn-primary pull-right">
+    返回
+  </a>
+</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @kind %> |
-<%= link_to 'Back', kinds_path %>
+<%= simple_form_for(admin_kind_path(@kind)) do |f| %>
+  <%= f.input :name, label: "分类" %>
+  <%= f.submit "更新", class: "btn btn-info btn-large" %>
+<% end %>
