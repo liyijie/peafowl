@@ -1,6 +1,13 @@
-<h1>Editing item</h1>
+<h3 class="page-header">编辑菜单</h3>
 
-<%= render 'form' %>
+<%= simple_form_for(@item, url: admin_item_path(@item),html: {multipart: true, class: "form_horizontal"}) do |f| %>
+  <%= f.input :name, label: "菜名" %>
+  <%= f.input :price, label: "价格" %>
+  <%= f.input :desc, label: "描述", :input_html => { :rows => 6 } %>
+  <%= f.association :kind, label: "分类", prompt: "请选择分类" %>
 
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', items_path %>
+  <%= f.input :attachment, label: "图片", :as => "file" %>
+
+  <%= f.submit "提交", :class => "btn btn-success btn-large" %>
+  <%= link_to "返回", admin_items_path, :class => "btn" %>
+<% end %>

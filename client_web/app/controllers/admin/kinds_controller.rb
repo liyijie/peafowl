@@ -33,7 +33,7 @@ class Admin::KindsController < Admin::AdminController
 
     respond_to do |format|
       if @kind.save
-        format.html { redirect_to @kind, notice: 'Kind was successfully created.' }
+        format.html { redirect_to admin_kinds_path, notice: "分类 #{@kind.name} 创建成功" }
         format.json { render json: @kind, status: :created, location: @kind }
       else
         format.html { render action: "new" }
@@ -49,7 +49,7 @@ class Admin::KindsController < Admin::AdminController
 
     respond_to do |format|
       if @kind.update_attributes(params[:kind])
-        format.html { redirect_to @kind, notice: 'Kind was successfully updated.' }
+        format.html { redirect_to admin_kinds_path, notice: "分类 #{@kind.name} 更新成功" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -65,7 +65,7 @@ class Admin::KindsController < Admin::AdminController
     @kind.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_kinds_url, notice: "分类#{kind.name}删除成功" }
+      format.html { redirect_to admin_kinds_url, notice: "分类 #{@kind.name} 删除成功" }
       format.json { head :no_content }
     end
   end

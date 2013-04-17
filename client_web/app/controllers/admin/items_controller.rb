@@ -40,12 +40,13 @@ class Admin::ItemsController < Admin::AdminController
   # POST /items
   # POST /items.json
   def create
+    attachment = params[:item].delete(:attachment)
     @item = Item.new(params[:item])
 
     respond_to do |format|
       if @item.save
-        Attachment.create(attachment: params[:attachment], attachmentable: @item) if params[:attachment]
-        format.html { redirect_to admin_item_path(item), notice: 'Item was successfully created.' }
+        Attachment.create(attachment: attachment, attachmentable: @item) if params[:attachment]
+        format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
