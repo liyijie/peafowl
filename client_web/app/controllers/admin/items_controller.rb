@@ -45,7 +45,7 @@ class Admin::ItemsController < Admin::AdminController
 
     respond_to do |format|
       if @item.save
-        Attachment.create(attachment: attachment, attachmentable: @item) if params[:attachment]
+        Attachment.create(attachment: attachment, attachmentable: @item) if attachment
         format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else

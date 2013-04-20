@@ -1,13 +1,22 @@
 <h3 class="page-header">编辑菜单</h3>
 
-<%= simple_form_for(@item, url: admin_item_path(@item),html: {multipart: true, class: "form_horizontal"}) do |f| %>
+<%= simple_nested_form_for(@item, url: admin_item_path(@item),html: {multipart: true, class: "form_horizontal"}) do |f| %>
   <%= f.input :name, label: "菜名" %>
   <%= f.input :price, label: "价格" %>
   <%= f.input :desc, label: "描述", :input_html => { :rows => 6 } %>
   <%= f.association :kind, label: "分类", prompt: "请选择分类" %>
 
-  <%= f.input :attachment, label: "图片", :as => "file" %>
+  <%= f.simple_fields_for :attachments do |a| %>
+    <%= a.input :attach, :as => :file %>
+    <%= a.link_to_remove "Remove this attachment" %>
+  <% end %>
+  <%= f.link_to_add "Add a attachment", :attachments %>
 
+  <% @item.attachments.each do |attachment| %>
+    <%= image_tag(attachment.attachment) %>
+  <% end %>
+
+  <br/>
   <%= f.submit "提交", :class => "btn btn-success btn-large" %>
   <%= link_to "返回", admin_items_path, :class => "btn" %>
 <% end %>

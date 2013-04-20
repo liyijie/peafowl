@@ -18,4 +18,3 @@
 //= require backbone.localStorage
 //= require json2
 //= require client_web
-//= require home
