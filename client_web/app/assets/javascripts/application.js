@@ -15,5 +15,6 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require backbone.localStorage
+//= require json2
 //= require client_web
-//= require_tree .

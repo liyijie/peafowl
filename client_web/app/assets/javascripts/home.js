@@ -25,7 +25,8 @@ $(function() {
 
   var OrderItemList = Backbone.Collection.extend({
     model: OrderItem,
-    url: "/orders",
+    //url: "/orders",
+    localStorage: new Backbone.LocalStorage("order-items"),
 
     totalPrice: function() {
       var totalPrice = 0;
@@ -57,6 +58,12 @@ $(function() {
       return this.find(function(order) {
         return order.get("foot_id") == foot_id;
       });
+    },
+
+    checkout: function() {
+      $.postJSON("/orders", this.toJSON(), function(response) {
+        alert(response);
+      }, 'json');
     }
   });
 
@@ -82,6 +89,10 @@ $(function() {
 
   var AppView = Backbone.View.extend({
 
+    events: {
+      'click #checkout': 'checkout'
+    },
+
     initialize: function() {
       this.listenTo(orderItemList, "add", this.addOrder);
       this.listenTo(orderItemList, "all", this.orderTotalPrice);
@@ -96,6 +107,8 @@ $(function() {
         var orderItem = { foot_id: $this.attr("data-id"), title: $this.text(), price: $this.attr("data-price"), ammount: 1 };
         orderItemList.increaseOrder(orderItem);
       });
+
+
     },
 
     render: function() {
@@ -109,6 +122,10 @@ $(function() {
 
     orderTotalPrice: function() {
       this.orderTotalPriceText.text(orderItemList.totalPrice());
+    },
+
+    checkout: function() {
+      orderItemList.checkout();
     }
 
   });

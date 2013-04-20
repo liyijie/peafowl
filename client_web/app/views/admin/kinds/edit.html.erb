@@ -1,0 +1,7 @@
+<h2 class="page-header">编辑分类</h2>
+
+<%= simple_form_for(@kind, url: admin_kind_path(@kind)) do |f| %>
+  <%= f.input :name, label: "分类" %>
+  <%= f.submit "更新", class: "btn btn-success btn-large" %>
+  <%= link_to "返回", admin_kinds_path, :class => "btn" %>
+<% end %>

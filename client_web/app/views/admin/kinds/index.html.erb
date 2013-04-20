@@ -1,0 +1,27 @@
+<h2 class="page-header">分类管理
+  <a href="<%= new_admin_kind_path %>" class="btn btn-info pull-right">
+    增加分类
+  </a>
+</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>分类</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @kinds.each do |kind| %>
+      <tr>
+        <td><%= kind.name %></td>
+        <td>
+          <span class="pull-right">
+            <%= link_to '编辑', edit_admin_kind_path(kind), class: "btn btn-info" %>
+            <%= link_to '删除', admin_kind_path(kind), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

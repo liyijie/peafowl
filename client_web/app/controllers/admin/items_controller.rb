@@ -1,8 +1,8 @@
-class ItemsController < ApplicationController
+class Admin::ItemsController < Admin::AdminController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,12 +40,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    attachment = params[:item].delete(:attachment)
     @item = Item.new(params[:item])
 
     respond_to do |format|
       if @item.save
-        Attachment.create(attachment: params[:attachment], attachmentable: @item) if params[:attachment]
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        Attachment.create(attachment: attachment, attachmentable: @item) if attachment
+        format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +78,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.html { redirect_to admin_items_url }
       format.json { head :no_content }
     end
   end
