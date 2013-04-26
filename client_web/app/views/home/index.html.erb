@@ -1,4 +1,5 @@
-  <div id="order-page">
+<div id="order-page">
+  <div>
     <div class="span6">
       <button class="btn btn-primary btn-block btn-large">
         私房牛头面馆
@@ -52,25 +53,25 @@
             <div class="tab-pane <%= "active" if index == 1 %>" id="tab<%= index %>">
               <ul class="nav">
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>1" data-price="10.0">麻婆豆腐<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>1" data-price="10.0">麻婆豆腐<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>2" data-price="10.0">回锅肉<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>2" data-price="10.0">回锅肉<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>3" data-price="10.0">宫保鸡丁<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>3" data-price="10.0">宫保鸡丁<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>4" data-price="10.0">夫妻肺片<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>4" data-price="10.0">夫妻肺片<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>5" data-price="10.0">口水鸡<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>5" data-price="10.0">口水鸡<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>6" data-price="10.0">重庆鸡公煲<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>6" data-price="10.0">重庆鸡公煲<%= index %></button>
                 </li>
                 <li>
-                  <button class="span4 btn btn-large foot" data-id="<%= index %>7" data-price="10.0">蒜泥白肉<%= index %></button>
+                  <button class="span4 btn btn-large food" data-id="<%= index %>7" data-price="10.0">蒜泥白肉<%= index %></button>
                 </li>
               </ul>
             </div>
@@ -80,51 +81,35 @@
     </div>
   </div>
 
-  <div id="order-footer">
-    <div id="operations">
-      <button class="btn btn-danger pull-right" id="checkout">结账</button>
-      <div class="btn-group">
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
+  <div id="order-footer" class="span12">
+      <div class="span10">
+        <div class="btn-group">
+          <button class="btn btn-info btn-large" id="plus-item">数量 <i class="icon-plus"></i></button>
+          <button class="btn btn-info btn-large" id="delete-order">整单删除 <i class="icon-trash"></i></button>
+        </div>
+        <br>
+        <div class="btn-group">
+          <button class="btn btn-info btn-large" id="minus-item">数量 <i class="icon-minus"></i></button>
+        </div>
       </div>
-      <div class="btn-group">
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-        <button class="btn btn-info btn-large">数量 <i class="icon-plus"></i></button>
-      </div>
-    </div>
 
-    <div class="base-info">
-      <p>
-        <span>收款管理软件</span>
-        <span>门店：宝山店</span>
-        <span>收银员：<%= current_user.username %></span>
-      </p>
-      <p>
-        <span>单号：201301010001</span>
-        <span>台号：001</span>
-      </p>
+      <button class="btn btn-danger span2" id="checkout">结账</button>
+
+    <div class="span12 base-info">
+      <div class="">
+        <p>
+          <span>收款管理软件</span>
+          <span>门店：宝山店</span>
+          <span>收银员：<%= current_user.username %></span>
+        </p>
+        <p>
+          <span>单号：201301010001</span>
+          <span>台号：001</span>
+        </p>
+      </div>
     </div>
   </div>
+</div>
 
 <script type="text/template" id="order-template">
   <td></td>

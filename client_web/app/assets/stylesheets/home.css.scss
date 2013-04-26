@@ -21,24 +21,27 @@
 #order-footer {
   position: fixed;
   bottom: 0;
+  margin: 0;
+  padding: 0;
+
+  .btn-group {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .base-info {
-  border: 1px solid #ccc;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding-top: 10px;
 
   span {
     background-color: #fff;
   }
 }
 
-#operations {
-  .btn-group {
-    margin-left: 0;
-  }
-
-  #checkout {
-    font-size: 2em;
-    padding: 30px;
-  }
+#checkout {
+  font-size: 2em;
+  padding: 30px;
 }
